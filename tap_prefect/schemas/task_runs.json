@@ -21,13 +21,19 @@
             "type": "string"
         },
         "deployment_id": {
-            "type": "string"
+            "type": [
+                "null",
+                "string"
+            ]
         },
         "work_queue_name": {
             "type": "string"
         },
         "flow_version": {
-            "type": "string"
+            "type": [
+                "null",
+                "string"
+            ]
         },
         "parameters": {
             "type": "object"
