@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "occurred": {
+      "type": "string"
+    },
+    "event": {
+      "type": "string"
+    },
+    "resource": {
+      "type": "object"
+    },
+    "related": {
+        "type": "array"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "id": {
+      "type": "string"
+    },
+    "follows": {
+      "type": [
+        "null",
+        "string"
+    ]
+    },
+    "account": {
+      "type": "string"
+    },
+    "workspace": {
+      "type": "string"
+    },
+    "received": {
+      "type": "string"
+    },
+    "total": {
+      "type": "integer"
+    },
+    "next_page": {
+      "type": "string"
+    }
+  }
+}

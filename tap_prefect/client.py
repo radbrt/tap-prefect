@@ -9,6 +9,7 @@ import requests
 from singer_sdk.authenticators import BearerTokenAuthenticator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
+from singer_sdk.helpers._typing import TypeConformanceLevel
 
 _Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
@@ -23,7 +24,8 @@ class prefectStream(RESTStream):
     # url_base = "https://api.prefect.cloud/api/"
 
     rest_method = "POST"
-    PAGE_SIZE = 5
+    PAGE_SIZE = 100
+    TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
     # OR use a dynamic url_base:
     @property
