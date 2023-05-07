@@ -7,7 +7,7 @@ from typing import TypeVar
 from typing import Optional, Dict, Any, Iterable
 from urllib.parse import parse_qsl
 from tap_prefect.client import prefectStream
-from singer_sdk.pagination import BaseHATEOASPaginator
+from singer_sdk.pagination import BaseHATEOASPaginator, SinglePagePaginator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 import logging
 import requests
@@ -27,6 +27,10 @@ class MyHATEOASPaginator(BaseHATEOASPaginator):
         LOGGER.info(f"Next: {next_page}")
         return next_page
 
+class MySinglePagePaginator(SinglePagePaginator):
+    """Custom paginator."""
+    def get_next(self, response):
+        return None
 
 class FlowRunStream(prefectStream):
     """Define custom stream."""
@@ -126,6 +130,52 @@ class FlowRunStream(prefectStream):
 
 #         return params
 
+class FlowsStream(prefectStream):
+
+    name = "flows"
+    rest_method = "POST"
+    records_jsonpath = "$.[*]"
+
+    schema_filepath = SCHEMAS_DIR / "flows.json"
+
+    def get_new_paginator(self):
+        return MySinglePagePaginator()
+    
+    @property
+    def path(self):
+        return f"/accounts/{self.config['account_id']}/workspaces/{self.config['workspace_id']}/flows/filter"
+
+    def prepare_request_payload(
+        self, context: dict | None, next_page_token: _TToken | None
+    ) -> dict | None:
+        """Prepare the data payload for the REST API request.
+        """
+
+        return None
+
+
+class DeploymentsStream(prefectStream):
+
+    name = "deployments"
+    rest_method = "POST"
+    records_jsonpath = "$.[*]"
+    schema_filepath = SCHEMAS_DIR / "deployments.json"
+
+    def get_new_paginator(self):
+        return MySinglePagePaginator()
+    
+    @property
+    def path(self):
+        return f"/accounts/{self.config['account_id']}/workspaces/{self.config['workspace_id']}/deployments/filter"
+
+    def prepare_request_payload(
+        self, context: dict | None, next_page_token: _TToken | None
+    ) -> dict | None:
+        """Prepare the data payload for the REST API request.
+        """
+
+        return None
+        
 
 class EventStream(prefectStream):
     """Define custom stream."""
@@ -133,6 +183,10 @@ class EventStream(prefectStream):
     name = "events"
     rest_method = "POST"
     records_jsonpath = "$.events[*]"
+
+    primary_keys = ["id"]
+    replication_key = None
+    schema_filepath = SCHEMAS_DIR / "events.json"
 
     @property
     def path(self):
