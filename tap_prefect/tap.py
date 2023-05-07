@@ -57,8 +57,8 @@ class Tapprefect(Tap):
             A list of discovered streams.
         """
         return [
-            # streams.FlowRunStream(self),
-            streams.TaskRunSubStream(self),
+            streams.FlowRunStream(self),
+            # streams.TaskRunSubStream(self),
             streams.EventStream(self),
         ]
 
