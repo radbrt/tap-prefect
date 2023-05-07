@@ -58,6 +58,7 @@ class Tapprefect(Tap):
         """
         return [
             streams.DeploymentsStream(self),
+            streams.FlowsStream(self),
             # streams.FlowRunStream(self),
             # streams.TaskRunSubStream(self),
             # streams.EventStream(self),
