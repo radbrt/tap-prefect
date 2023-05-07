@@ -59,7 +59,7 @@ class Tapprefect(Tap):
         return [
             streams.FlowRunStream(self),
             # streams.TaskRunSubStream(self),
-            streams.EventStream(self),
+            # streams.EventStream(self),
         ]
 
 
