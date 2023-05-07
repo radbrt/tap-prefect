@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "description": {
+      "type": [
+        "null",
+        "string"
+    ]
+    },
+    "flow_id": {
+      "type": "string"
+    },
+    "schedule": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "is_schedule_active": {
+      "type": "boolean"
+  },
+    "infra_overrides": {
+      "type": "object"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "pull_steps": {
+      "type": "array"
+    },
+      "tags": {
+        "type": "array"
+    },
+    "work_queue_name": {
+      "type": "string"
+    },
+    "parameter_openapi_schema": {
+      "type": "object"
+    },
+    "path": {
+      "type": "string"
+    },
+    "entrypoint": {
+      "type": "string"
+    },
+    "manifest_path": {
+      "type": [
+        "null",
+        "string"
+    ]
+    },
+    "storage_document_id": {
+      "type": "string"
+    },
+    "infrastructure_document_id": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "object"
+    },
+    "updated_by": {
+      "type": "object"
+    },
+    "work_pool_name": {
+      "type": "string"
+    }
+  }
+}
