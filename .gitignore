@@ -139,3 +139,6 @@ dmypy.json
 # dev
 ._*
 catalog.json
+logging.yaml
+extractors/
+plugins/
