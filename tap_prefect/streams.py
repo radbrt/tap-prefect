@@ -24,7 +24,6 @@ class MyHATEOASPaginator(BaseHATEOASPaginator):
     """Custom paginator."""
     def get_next_url(self, response):
         next_page = response.json().get("next_page")
-        LOGGER.info(f"Next: {next_page}")
         return next_page
 
 class MySinglePagePaginator(SinglePagePaginator):
@@ -61,8 +60,6 @@ class FlowRunStream(prefectStream):
         """
 
         starting_date = self.get_starting_replication_key_value(context) or self.config.get("start_date")
-
-        self.logger.info(f"Starting date: {starting_date}")
 
         params = {
             "sort": "EXPECTED_START_TIME_ASC",
@@ -228,10 +225,8 @@ class EventStream(prefectStream):
             HTTP headers and authenticator.
         """
         if next_page_token:
-            self.logger.info(f"Next page token: {next_page_token}")
             http_method = "POST"
         else:
-            self.logger.info(f"First page")
             http_method = self.rest_method
 
         url: str = self.get_url(context)
@@ -247,8 +242,6 @@ class EventStream(prefectStream):
             json=request_data,
         )
 
-        self.logger.info(f"Prepped request: {prepped}")
-        self.logger.info(f"URL: {url}")
         return self.build_prepared_request(
             method=http_method,
             url=url,
@@ -305,7 +298,6 @@ class EventStream(prefectStream):
             An item for every record in the response.
         """
         paginator = self.get_new_paginator()
-        self.logger.info(f"***We can haz paginator***: {paginator}")
         decorated_request = self.request_decorator(self._request)
 
         with metrics.http_request_counter(self.name, self.path) as request_counter:
@@ -313,7 +305,6 @@ class EventStream(prefectStream):
 
             while not paginator.finished:
                 npt = paginator.current_value
-                self.logger.info(f"***Running through the pagez***: {npt}")
                 prepared_request = self.prepare_request(
                     context,
                     next_page_token=npt,
