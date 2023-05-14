@@ -42,7 +42,7 @@ class FlowRunStream(prefectStream):
         return f"/accounts/{self.config['account_id']}/workspaces/{self.config['workspace_id']}/flow_runs/filter"
 
     primary_keys = ["id"]
-    replication_key = "expected_start_time"
+    # replication_key = "expected_start_time"
     schema_filepath = SCHEMAS_DIR / "flow_runs.json"
 
     def prepare_request_payload(
@@ -59,7 +59,8 @@ class FlowRunStream(prefectStream):
             Dictionary with the body to use for the request.
         """
 
-        starting_date = self.get_starting_replication_key_value(context) or self.config.get("start_date")
+        # starting_date = self.get_starting_replication_key_value(context) or self.config.get("start_date")
+        starting_date = self.config.get("start_date") or '2021-01-01T00:00:00.000000+00:00'
 
         params = {
             "sort": "EXPECTED_START_TIME_ASC",
