@@ -202,10 +202,7 @@ class EventStream(prefectStream):
         self, context: Optional[dict], next_page_token: Optional[Any]
     ) -> Dict[str, Any]:
         """Return next page link or None."""
-        # if next_page_token:
-        #     self.logger.info(f"Next page token: {next_page_token}")
-        #     return dict(parse_qsl(next_page_token.query))
-        # # return {}
+
         return None
 
     def prepare_request(
@@ -278,26 +275,13 @@ class EventStream(prefectStream):
         return params
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
-        """Parse the response and return an iterator of result records.
+        """Parse the response and return an iterator of result records."""
 
-        Args:
-            response: The HTTP ``requests.Response`` object.
-
-        Yields:
-            Each record from the source.
-        """
-        # TODO: Parse response body and return a set of records.
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
 
     def request_records(self, context: dict | None) -> t.Iterable[dict]:
-        """Request records from REST endpoint(s), returning response records.
-        If pagination is detected, pages will be recursed automatically.
-        Args:
-            context: Stream partition or context dictionary.
-        Yields:
-            An item for every record in the response.
-        """
+        """Request records from REST endpoint(s), returning response records."""
         paginator = self.get_new_paginator()
         decorated_request = self.request_decorator(self._request)
 
@@ -305,11 +289,11 @@ class EventStream(prefectStream):
             request_counter.context = context
 
             while not paginator.finished:
-                npt = paginator.current_value
                 prepared_request = self.prepare_request(
                     context,
-                    next_page_token=npt,
+                    next_page_token=paginator.current_value
                 )
+
                 resp = decorated_request(prepared_request, context)
                 request_counter.increment()
                 self.update_sync_costs(prepared_request, resp, context)
@@ -321,20 +305,9 @@ class EventStream(prefectStream):
     def prepare_request(
         self,
         context: dict | None,
-        next_page_token: _TToken | None,
+        next_page_token: _TToken | None
     ) -> requests.PreparedRequest:
-        """Prepare a request object for this stream.
-        If partitioning is supported, the `context` object will contain the partition
-        definitions. Pagination information can be parsed from `next_page_token` if
-        `next_page_token` is not None.
-        Args:
-            context: Stream partition or context dictionary.
-            next_page_token: Token, page number or any request argument to request the
-                next page of data.
-        Returns:
-            Build a request with the stream's URL, path, query parameters,
-            HTTP headers and authenticator.
-        """
+        """Prepare a request object for this stream."""
 
         if next_page_token:
             http_method = "GET"
@@ -346,6 +319,8 @@ class EventStream(prefectStream):
         params: dict | str = self.get_url_params(context, next_page_token)
         request_data = self.prepare_request_payload(context, next_page_token)
         headers = self.http_headers
+
+
         return self.build_prepared_request(
             method=http_method,
             url=url,
@@ -353,4 +328,5 @@ class EventStream(prefectStream):
             headers=headers,
             json=request_data,
         )
+
 
