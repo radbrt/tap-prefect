@@ -24,7 +24,14 @@ class MyHATEOASPaginator(BaseHATEOASPaginator):
     """Custom paginator."""
     def get_next_url(self, response):
         next_page = response.json().get("next_page")
+
+        # Incredibly ugly hack to aviod what has to be a bug in the API: It seems the final page returns a 
+        # next_page URL that is invalid and returns a 500. This URL is much shorter than the normal ones, so we are
+        # checking for this here.
+        if len(next_page) < 400:
+            return None
         return next_page
+    
 
 class MySinglePagePaginator(SinglePagePaginator):
     """Custom paginator."""
