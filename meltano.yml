@@ -16,7 +16,7 @@ plugins:
     - about
     - stream-maps
     config:
-      start_date: '2023-05-05T00:00:00Z'
+      start_date: '2023-05-13T00:00:00Z'
       api_url: "https://api.prefect.cloud/api"
     settings:
     # TODO: To configure using Meltano, declare settings and their types here:

@@ -60,8 +60,9 @@ class Tapprefect(Tap):
             streams.DeploymentsStream(self),
             streams.FlowsStream(self),
             streams.FlowRunStream(self),
+            # streams.TaskRunStream(self),
             # streams.TaskRunSubStream(self),
-            # streams.EventStream(self),
+            streams.EventStream(self),
         ]
 
 

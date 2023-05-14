@@ -67,26 +67,20 @@ class prefectStream(RESTStream):
         # headers["Private-Token"] = self.config.get("auth_token")
         return headers
 
-    def get_next_page_token(
-        self,
-        response: requests.Response,
-        previous_token: Any | None,
-    ) -> int | None:
-        """Return a token for identifying next page or None if no more pages.
+    # def get_next_page_token(
+    #     self,
+    #     response: requests.Response,
+    #     previous_token: Any | None,
+    # ) -> int | None:
+    #     """Return a token for identifying next page or None if no more pages."""
 
-        Args:
-            response: The HTTP ``requests.Response`` object.
-            previous_token: The previous page token value.
+    #     if len(response.json()) == 0:
+    #         return None
+        
+    #     previous_token = previous_token or 0
 
-        Returns:
-            The next pagination token.
-        """
-        previous_token = previous_token or 0
-
-        if len(response.json()) == 0:
-            return None
-
-        return previous_token + self.PAGE_SIZE
+    #     return previous_token + self.PAGE_SIZE
+    
 
     def get_url_params(
         self,
