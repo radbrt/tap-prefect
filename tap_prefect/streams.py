@@ -1,5 +1,6 @@
 """Stream type classes for tap-prefect."""
 
+
 from __future__ import annotations
 from singer_sdk import metrics
 from pathlib import Path
@@ -55,16 +56,7 @@ class FlowRunStream(prefectStream):
     def prepare_request_payload(
         self, context: dict | None, next_page_token: _TToken | None
     ) -> dict | None:
-        """Prepare the data payload for the REST API request.
-
-        Args:
-            context: Stream partition or context dictionary.
-            next_page_token: Token, page number or any request argument to request the
-                next page of data.
-
-        Returns:
-            Dictionary with the body to use for the request.
-        """
+        """Prepare the data payload for the REST API request."""
 
         # starting_date = self.get_starting_replication_key_value(context) or self.config.get("start_date")
         starting_date = self.config.get("start_date") or '2021-01-01T00:00:00.000000+00:00'
@@ -210,50 +202,8 @@ class EventStream(prefectStream):
     ) -> Dict[str, Any]:
         """Return next page link or None."""
 
-        return None
+        return {}
 
-    def prepare_request(
-        self,
-        context: dict | None,
-        next_page_token: _TToken | None,
-    ) -> requests.PreparedRequest:
-        """Prepare a request object for this stream.
-        If partitioning is supported, the `context` object will contain the partition
-        definitions. Pagination information can be parsed from `next_page_token` if
-        `next_page_token` is not None.
-        Args:
-            context: Stream partition or context dictionary.
-            next_page_token: Token, page number or any request argument to request the
-                next page of data.
-        Returns:
-            Build a request with the stream's URL, path, query parameters,
-            HTTP headers and authenticator.
-        """
-        if next_page_token:
-            http_method = "POST"
-        else:
-            http_method = self.rest_method
-
-        url: str = self.get_url(context)
-        params: dict | str = self.get_url_params(context, next_page_token)
-        request_data = self.prepare_request_payload(context, next_page_token)
-        headers = self.http_headers
-
-        prepped = self.build_prepared_request(
-            method=http_method,
-            url=url,
-            params=params,
-            headers=headers,
-            json=request_data,
-        )
-
-        return self.build_prepared_request(
-            method=http_method,
-            url=url,
-            params=params,
-            headers=headers,
-            json=request_data,
-        )
 
     def prepare_request_payload(
         self, context: dict | None, next_page_token: _TToken | None

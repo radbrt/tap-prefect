@@ -109,7 +109,7 @@ class prefectStream(RESTStream):
         #     params["sort"] = "asc"
         #     params["order_by"] = self.replication_key
 
-        return None
+        return {}
 
     def prepare_request_payload(
         self,

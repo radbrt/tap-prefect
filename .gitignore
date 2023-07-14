@@ -142,3 +142,4 @@ catalog.json
 logging.yaml
 extractors/
 plugins/
+config.json

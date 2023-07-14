@@ -25,6 +25,7 @@ pyupgrade = "^3.3.1"
 mypy = "^1.0.0"
 isort = "^5.11.5"
 types-requests = "^2.28.11.12"
+viztracer = "^0.15.6"
 
 [tool.poetry.extras]
 s3 = ["fs-s3fs"]
