@@ -132,6 +132,7 @@ class FlowsStream(prefectStream):
     name = "flows"
     rest_method = "POST"
     records_jsonpath = "$.[*]"
+    primary_keys = ["id"]
 
     schema_filepath = SCHEMAS_DIR / "flows.json"
 
@@ -155,6 +156,7 @@ class DeploymentsStream(prefectStream):
 
     name = "deployments"
     rest_method = "POST"
+    primary_keys = ["id"]
     records_jsonpath = "$.[*]"
     schema_filepath = SCHEMAS_DIR / "deployments.json"
 
