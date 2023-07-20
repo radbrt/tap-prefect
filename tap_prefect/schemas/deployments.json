@@ -41,9 +41,6 @@
     "parameters": {
       "type": "object"
     },
-    "pull_steps": {
-      "type": ["null", "array"]
-    },
       "tags": {
         "type":["null", "array"]
     },
