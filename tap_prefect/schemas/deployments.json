@@ -42,10 +42,10 @@
       "type": "object"
     },
     "pull_steps": {
-      "type": "array"
+      "type": ["array", "null"]
     },
       "tags": {
-        "type": "array"
+        "type":["array", "null"]
     },
     "work_queue_name": {
       "type": "string"

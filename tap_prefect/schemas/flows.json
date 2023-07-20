@@ -15,7 +15,7 @@
         "type": "string"
       },
       "tags": {
-        "type": "array"
+        "type": ["array", "null"]
     }
   }
 }
