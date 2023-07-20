@@ -8,7 +8,7 @@ from typing import TypeVar
 from typing import Optional, Dict, Any, Iterable
 from urllib.parse import parse_qsl
 from tap_prefect.client import prefectStream
-from singer_sdk.pagination import BaseHATEOASPaginator, SinglePagePaginatorm, BaseOffsetPaginator
+from singer_sdk.pagination import BaseHATEOASPaginator, SinglePagePaginator, BaseOffsetPaginator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 import logging
 import requests
