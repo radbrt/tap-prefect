@@ -12,7 +12,7 @@
       "type": "object"
     },
     "related": {
-        "type": ["array", "null"],
+        "type": ["array", "null"]
     },
     "payload": {
       "type": "object"
