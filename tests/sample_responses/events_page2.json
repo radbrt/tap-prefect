@@ -1,0 +1,46 @@
+{
+  "events": [
+      {
+      "occurred": "2019-08-24T14:15:22Z",
+      "event": "string",
+      "resource": {
+          "property1": "string",
+          "property2": "string"
+      },
+      "related": [
+          {
+          "property1": "string",
+          "property2": "string"
+          }
+      ],
+      "payload": {},
+      "id": "607f6eca-6276-4993-bfeb-53cbbbba6f07",
+      "follows": "66915a23-275f-4bda-9b8b-f0f84196982a",
+      "account": "f5b54a51-a98c-44cf-bb68-a676332e7d12",
+      "workspace": "3f216741-15dd-4e46-b5ac-0077a2640e89",
+      "received": "2019-08-24T14:15:22Z"
+      },
+      {
+        "occurred": "2019-08-24T14:15:22Z",
+        "event": "string",
+        "resource": {
+            "property1": "string",
+            "property2": "string"
+        },
+        "related": [
+            {
+            "property1": "string",
+            "property2": "string"
+            }
+        ],
+        "payload": {},
+        "id": "617f6eca-6276-4993-bfeb-53cbbbba6f06",
+        "follows": "66915a23-275f-4bda-9b8b-f0f84196982a",
+        "account": "f5b54a51-a98c-44cf-bb68-a676332e7d12",
+        "workspace": "3f216741-15dd-4e46-b5ac-0077a2640e89",
+        "received": "2019-08-24T14:15:22Z"
+        }
+  ],
+  "total": 0,
+  "next_page": "https://api.prefect.cloud/api/accounts/66915a23-275f-4bda-9b8b-f0f84196982a/workspaces/66915a23-275f-4bda-9b8b-f0f84196982a/events/filter/next?page-token=abc123def456"
+}

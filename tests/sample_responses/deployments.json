@@ -1,0 +1,90 @@
+[{
+  "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+  "created": "2019-08-24T14:15:22Z",
+  "updated": "2019-08-24T14:15:22Z",
+  "name": "string",
+  "version": "string",
+  "description": "string",
+  "flow_id": "0746f03b-16cc-49fb-9833-df3713d407d2",
+  "schedule": {
+      "interval": 0,
+      "anchor_date": "2019-08-24T14:15:22Z",
+      "timezone": "America/New_York"
+  },
+  "is_schedule_active": true,
+  "infra_overrides": {},
+  "parameters": {},
+  "status": "NOT_READY",
+  "last_polled": "2019-08-24T14:15:22Z",
+  "pull_steps": [
+      {}
+  ],
+  "tags": [
+      "tag-1",
+      "tag-2"
+  ],
+  "work_queue_name": "string",
+  "parameter_openapi_schema": {},
+  "path": "string",
+  "entrypoint": "string",
+  "manifest_path": "string",
+  "storage_document_id": "e0212ac4-7ec3-401b-b1e6-2a4627d8e7ec",
+  "infrastructure_document_id": "ce9a08a7-d77b-4b3f-826a-53820cfe01fa",
+  "created_by": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "type": "string",
+      "display_value": "string"
+  },
+  "updated_by": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "type": "string",
+      "display_value": "string"
+  },
+  "work_pool_name": "string",
+  "enforce_parameter_schema": false
+},
+{
+  "id": "507f6eca-6276-4993-bfeb-53cbbbba6f09",
+  "created": "2019-08-24T14:15:22Z",
+  "updated": "2019-08-24T14:15:22Z",
+  "name": "string2",
+  "version": "1",
+  "description": "Yay",
+  "flow_id": "0746f03b-16cc-49fb-9833-df3713d407d2",
+  "schedule": {
+      "interval": 0,
+      "anchor_date": "2019-08-24T14:15:22Z",
+      "timezone": "America/New_York"
+  },
+  "is_schedule_active": true,
+  "infra_overrides": {},
+  "parameters": {},
+  "status": "NOT_READY",
+  "last_polled": "2019-08-24T14:15:22Z",
+  "pull_steps": [
+      {}
+  ],
+  "tags": [
+      "tag-1"
+  ],
+  "work_queue_name": "string",
+  "parameter_openapi_schema": {},
+  "path": "string",
+  "entrypoint": "string",
+  "manifest_path": "string",
+  "storage_document_id": "e0212ac4-7ec3-401b-b1e6-2a4627d8e7ec",
+  "infrastructure_document_id": "ce9a08a7-d77b-4b3f-826a-53820cfe01fa",
+  "created_by": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "type": "string",
+      "display_value": "string"
+  },
+  "updated_by": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "type": "string",
+      "display_value": "string"
+  },
+  "work_pool_name": "string",
+  "enforce_parameter_schema": false
+}
+]
