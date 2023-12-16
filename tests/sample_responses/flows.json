@@ -1,0 +1,22 @@
+[
+  {
+    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+    "created": "2019-08-24T14:15:22Z",
+    "updated": "2019-08-24T14:15:22Z",
+    "name": "my-flow",
+    "tags": [
+        "tag-1",
+        "tag-2"
+    ]
+  },
+  {
+    "id": "507f6eca-6276-4993-bfeb-53cbbbba6f09",
+    "created": "2019-08-24T14:15:22Z",
+    "updated": "2019-08-24T14:15:22Z",
+    "name": "my-other-flow",
+    "tags": [
+        "tag-1",
+        "tag-2"
+    ]
+  }
+]

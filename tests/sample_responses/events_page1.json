@@ -1,0 +1,46 @@
+{
+  "events": [
+      {
+      "occurred": "2019-08-24T14:15:22Z",
+      "event": "string",
+      "resource": {
+          "property1": "string",
+          "property2": "string"
+      },
+      "related": [
+          {
+          "property1": "string",
+          "property2": "string"
+          }
+      ],
+      "payload": {},
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "follows": "66915a23-275f-4bda-9b8b-f0f84196982a",
+      "account": "f5b54a51-a98c-44cf-bb68-a676332e7d12",
+      "workspace": "3f216741-15dd-4e46-b5ac-0077a2640e89",
+      "received": "2019-08-24T14:15:22Z"
+      },
+      {
+        "occurred": "2019-08-24T14:15:22Z",
+        "event": "string",
+        "resource": {
+            "property1": "string",
+            "property2": "string"
+        },
+        "related": [
+            {
+            "property1": "string",
+            "property2": "string"
+            }
+        ],
+        "payload": {},
+        "id": "507f6eca-6276-4993-bfeb-53cbbbba6f09",
+        "follows": "66915a23-275f-4bda-9b8b-f0f84196982a",
+        "account": "f5b54a51-a98c-44cf-bb68-a676332e7d12",
+        "workspace": "3f216741-15dd-4e46-b5ac-0077a2640e89",
+        "received": "2019-08-24T14:15:22Z"
+        }
+  ],
+  "total": 0,
+  "next_page": "https://api.prefect.cloud/api/accounts/123/workspaces/456/events/filter/next?page-token=OTcxNzMxMjk3YjkyZGE5YzA5MTViMjhmNDExMzdiYzQ6NjJkYzJjYTUtOTVjYS00ZjE2LTgzZDktMDk1NTAyYWY3NjlkOjg5YzI1ZDUzLWUwNjYtNDgwZC05MTg2LTk2ZWU4ZTYyMmU4NzpjLWV5Sm1hV3gwWlhJaU9pQjdJbTlqWTNWeWNtVmtJam9nZXlKemFXNWpaU0k2SUNJeU1ESXpMVEV5TFRBeVZEQXdPakF3T2pBd0t6QXdPakF3SWl3Z0luVnVkR2xzSWpvZ0lqSXdNak10TVRJdE1EbFVNVGs2TkRBNk5EQXVNams0T0RZeEt6QXdPakF5SW4wc0lDSmxkbVZ1ZENJNklIc2ljSEpeWm1sNElqb2diblZzYkN3Z0ltVjRZMngxWkdWZmNISmxabWw0SWpvZ2JyVnNiQ3dnSW01aGJXVWlPaUJ1ZFd4c0xEQWlaWGhqYkhWa1pWOXVZVzVsSWlvZ1d5SndjbVZtWldOMExteHZaeTUzY21sMFpTSmRmU3dnSW1GdWVWOXlaWE52ZFhKalpTSTZJRzUxYkd3c0lDSnlaWE52ZFhKalpTSTZJRzUxYkd3c0lDSnlaV3hoZEdWa0lqb2diblZzYkN3Z0luTmpiM0JsSWpvZ2V5SmhZMk52ZFc1MElqb2dJall5WkdNeVkyRTFMVGsxWTJFdE5HWXhOaTA0TTJRNUxUQTVOVFV3TW1GbU56WTVaQ0lzSUNKM2IzSnJjM0JoWTJVaU9pQmJJamc1WXpJMVpEVXpMV1V3TmpZdE5EZ3daQzA1TVRnMkxUazJaV1U0WlRZeU1tVTROeUpkZlN3Z0ltbGtJam9nZXlKcFpDSTZJRzUxYkd4OUxDQWliM0prWlhJaU9pQWlSRVZUUXlKOUxDQWlZMjkxYm5RaU9pQTNNVFl4TENBaWNHRm5aVjl6YVhwbElqb2dOVEFzSUNKdlptWnpaWFFpT2lBMU1IMD0="
+}
