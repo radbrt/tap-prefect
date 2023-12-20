@@ -9,7 +9,11 @@ from typing import Any, Dict, Iterable, Optional, TypeVar
 import requests
 from singer_sdk import metrics
 from singer_sdk.helpers.jsonpath import extract_jsonpath
-from singer_sdk.pagination import BaseHATEOASPaginator, SinglePagePaginator
+from singer_sdk.pagination import (
+    BaseHATEOASPaginator,
+    BaseOffsetPaginator,
+    SinglePagePaginator,
+)
 
 from tap_prefect.client import prefectStream
 
@@ -18,6 +22,17 @@ LOGGER = logging.getLogger(__name__)
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 _TToken = TypeVar("_TToken")
+
+
+class MyOffsetPaginator(BaseOffsetPaginator):
+    """Custom paginator."""
+
+    def has_more(self, response):
+        data = response.json()
+        if data:
+            return False
+        else:
+            return True
 
 
 class MyHATEOASPaginator(BaseHATEOASPaginator):
@@ -239,7 +254,6 @@ class EventStream(prefectStream):
     name = "events"
     rest_method = "POST"
     records_jsonpath = "$.events[*]"
-
     primary_keys = ["id"]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "events.json"
@@ -256,6 +270,7 @@ class EventStream(prefectStream):
     primary_keys = ["id"]
     replication_key = "occurred"
     schema_filepath = SCHEMAS_DIR / "events.json"
+
     next_page_token_jsonpath = None  # "$.next_page"get
 
     def get_new_paginator(self):
@@ -294,12 +309,9 @@ class EventStream(prefectStream):
         Returns:
             Dictionary with the body to use for the request.
         """
-
         starting_date = self.get_starting_replication_key_value(
             context
-        ) or self.config.get(
-            "start_date"
-        )  # "2019-08-24T14:15:22Z"
+        ) or self.config.get("start_date")
 
         params = {
             "limit": 50,
@@ -309,7 +321,6 @@ class EventStream(prefectStream):
                 "order": "ASC",
             },
         }
-
         if next_page_token:
             return None
 
@@ -351,7 +362,6 @@ class EventStream(prefectStream):
                 request_counter.increment()
                 self.update_sync_costs(prepared_request, resp, context)
                 yield from self.parse_response(resp)
-
                 paginator.advance(resp)
 
     def prepare_request(
@@ -373,7 +383,6 @@ class EventStream(prefectStream):
         else:
             http_method = self.rest_method
             url = self.get_url(context)
-
         params: dict | str = self.get_url_params(context, next_page_token)
         request_data = self.prepare_request_payload(context, next_page_token)
         headers = self.http_headers

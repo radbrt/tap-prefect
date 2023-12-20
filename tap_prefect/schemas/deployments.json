@@ -41,11 +41,8 @@
     "parameters": {
       "type": "object"
     },
-    "pull_steps": {
-      "type": "array"
-    },
       "tags": {
-        "type": "array"
+        "type":["null", "array"]
     },
     "work_queue_name": {
       "type": "string"
@@ -63,7 +60,7 @@
       "type": [
         "null",
         "string"
-    ]
+      ]
     },
     "storage_document_id": {
       "type": "string"
