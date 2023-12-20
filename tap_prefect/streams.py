@@ -1,13 +1,16 @@
 """Stream type classes for tap-prefect."""
 
 from __future__ import annotations
+
 import logging
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional, TypeVar
+
 import requests
 from singer_sdk import metrics
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseHATEOASPaginator, SinglePagePaginator
+
 from tap_prefect.client import prefectStream
 
 LOGGER = logging.getLogger(__name__)
